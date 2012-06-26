@@ -1,0 +1,22 @@
+{
+  "author": "Robbie Clarken <rob.clarken@gmail.com>",
+  "name": "epics",
+  "description": "EPICS Channel Access for node.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/RobbieClarken/node-epics",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RobbieClarken/node-epics.git"
+  },
+  "main": "main.js",
+  "dependencies": {
+    "ref-struct": "0.0.3",
+    "ref": "0.0.19",
+    "ffi": "~1.0.1"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
