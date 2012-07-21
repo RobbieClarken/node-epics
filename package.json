@@ -10,9 +10,9 @@
   },
   "main": "main.js",
   "dependencies": {
-    "ref-struct": "0.0.3",
-    "ref": "0.0.19",
-    "ffi": "~1.0.1"
+    "ref-struct": "*",
+    "ref": "*",
+    "ffi": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
