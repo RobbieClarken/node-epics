@@ -2,9 +2,15 @@
 
 EPICS Channel Access in node.js.
 
+# Installation
+
+```bash
+  export NODE_EPICS_LIBCA=/path/to/libca
+```
+
 # Usage
 
-<pre>
+```javascript
   var epics = require('epics');
 
   var pv = new epics.Channel('SR11BCM01:CURRENT_MONITOR');
@@ -14,4 +20,4 @@ EPICS Channel Access in node.js.
   pv.connect(function() {
     pv.monitor();
   });
-</pre>
+```
