@@ -5,6 +5,11 @@ EPICS Channel Access in node.js.
 # Installation
 
 ```bash
+npm install epics
+```
+
+Ensure either `EPICS_BASE` and `EPICS_HOST_ARCH` are set or
+```bash
 export NODE_EPICS_LIBCA=/path/to/libca
 ```
 
