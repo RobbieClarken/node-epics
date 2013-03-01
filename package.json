@@ -1,8 +1,8 @@
 {
-  "author": "Robbie Clarken <rob.clarken@gmail.com>",
+  "author": "Robbie Clarken <robbie.clarken@gmail.com>",
   "name": "epics",
   "description": "EPICS Channel Access for node.js",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "homepage": "https://github.com/RobbieClarken/node-epics",
   "repository": {
     "type": "git",
