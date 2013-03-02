@@ -1,14 +1,91 @@
-var epics = require('../main');
+var epics = require('../main')
+  , assert = require('assert')
+  , spawn = require('child_process').spawn
+  , path = require('path');
 
-var pv = new epics.Channel('SR11BCM01:CURRENT_MONITOR');
-pv.on('value',function(data) {
-  console.log('Current:',data);
-});
-pv.connect(function() {
-  pv.monitor();
+var ioc = spawn('python', [path.join(__dirname, 'ioc.py')]);
+ioc.stderr.on('data', function(data) {
+  console.log('Error running IOC:\n', data.toString());
 });
 
-var loop = function() {
-  setTimeout(loop,5000);
-};
-loop();
+describe('channel', function() {
+  after(function() {
+    ioc.kill();
+  });
+  describe('type string', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:STRING');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return "all good"', function(done) {
+      pv.get(function(err, value) {
+        assert.equal(value, 'all good');
+        done();
+      });
+    });
+  });
+  describe('type int', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:INT');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return 7', function(done) {
+      pv.get(function(err, value) {
+        assert.equal(value, 7);
+        done();
+      });
+    });
+  });
+  describe('type float', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:FLOAT');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return 5.13', function(done) {
+      pv.get(function(err, value) {
+        assert.equal(value, 5.13);
+        done();
+      });
+    });
+  });
+  ////TODO: Fix enums
+  //describe('type enum', function() {
+  //  var pv;
+  //  before(function(done) {
+  //    pv = new epics.Channel('NODE_EPICS_TEST:ENUM');
+  //    pv.connect(function(err) {
+  //      done();
+  //    });
+  //  });
+  //  it('should return "Option 2"', function(done) {
+  //    pv.get(function(err, value) {
+  //      assert.equal(value, 'Option 2');
+  //      done();
+  //    });
+  //  });
+  //});
+  describe('type char', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:CHAR');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return 73', function(done) {
+      pv.get(function(err, value) {
+        assert.equal(value, 73);
+        done();
+      });
+    });
+  });
+});

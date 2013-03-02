@@ -26,3 +26,13 @@ pv.connect(function() {
   pv.monitor();
 });
 ```
+
+# Tests
+
+Tests can be run against an included IOC written in python and using the [pcaspy](https://code.google.com/p/pcaspy/) package.
+
+To run the tests, install pcaspy and then run:
+
+```bash
+npm test
+```

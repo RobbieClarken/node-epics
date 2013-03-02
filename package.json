@@ -9,12 +9,17 @@
     "url": "git://github.com/RobbieClarken/node-epics.git"
   },
   "main": "main.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha test/test.js"
+  },
   "dependencies": {
     "ref-struct": "*",
     "ref": "*",
     "ffi": "*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
