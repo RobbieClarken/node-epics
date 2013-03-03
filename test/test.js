@@ -88,4 +88,34 @@ describe('channel', function() {
       });
     });
   });
+  describe('type int waveform', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:INT_WAVEFORM');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return [5,4,3,2,1]', function(done) {
+      pv.get(function(err, value) {
+        assert.deepEqual(value, [5,4,3,2,1]);
+        done();
+      });
+    });
+  });
+  describe('type float waveform', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:FLOAT_WAVEFORM');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return [5.1,4.2,3.3]', function(done) {
+      pv.get(function(err, value) {
+        assert.deepEqual(value, [5.1,4.2,3.3]);
+        done();
+      });
+    });
+  });
 });

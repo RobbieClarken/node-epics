@@ -28,6 +28,16 @@ pvdb = {
     'CHAR' : {
         'type': 'char',
         'value': 73
+    },
+    'INT_WAVEFORM' : {
+        'type': 'int',
+        'count': 5,
+        'value': [5, 4, 3, 2, 1]
+    },
+    'FLOAT_WAVEFORM' : {
+        'type': 'float',
+        'count': 3,
+        'value': [5.1, 4.2, 3.3]
     }
 }
 
