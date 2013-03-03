@@ -20,9 +20,9 @@ describe('channel', function() {
         done();
       });
     });
-    it('should return "all good"', function(done) {
+    it('should return "a sufficiently long string"', function(done) {
       pv.get(function(err, value) {
-        assert.equal(value, 'all good');
+        assert.equal(value, 'a sufficiently long string');
         done();
       });
     });
@@ -114,6 +114,23 @@ describe('channel', function() {
     it('should return [5.1,4.2,3.3]', function(done) {
       pv.get(function(err, value) {
         assert.deepEqual(value, [5.1,4.2,3.3]);
+        done();
+      });
+    });
+  });
+  describe('type string waveform', function() {
+    var pv;
+    before(function(done) {
+      pv = new epics.Channel('NODE_EPICS_TEST:STRING_WAVEFORM');
+      pv.connect(function(err) {
+        done();
+      });
+    });
+    it('should return ["A39CharacterLongStringWhichIsTheMaximum", "another string", "& 1 more"]', function(done) {
+      pv.get(function(err, value) {
+        assert.deepEqual(value, ['A39CharacterLongStringWhichIsTheMaximum',
+                  'another string',
+                  '& 1 more']);
         done();
       });
     });

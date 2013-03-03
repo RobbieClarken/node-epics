@@ -10,7 +10,7 @@ prefix = 'NODE_EPICS_TEST:'
 pvdb = {
     'STRING' : {
         'type': 'string',
-        'value': 'all good'
+        'value': 'a sufficiently long string'
     },
     'INT' : {
         'type': 'int',
@@ -38,6 +38,13 @@ pvdb = {
         'type': 'float',
         'count': 3,
         'value': [5.1, 4.2, 3.3]
+    },
+    'STRING_WAVEFORM' : {
+        'type': 'string',
+        'count': 3,
+        'value': ['A39CharacterLongStringWhichIsTheMaximum',
+                  'another string',
+                  '& 1 more']
     }
 }
 
