@@ -8,6 +8,10 @@ https://code.google.com/p/pcaspy/
 
 prefix = 'NODE_EPICS_TEST:'
 pvdb = {
+    'CONNECTION': {
+        'type': 'int',
+        'value': 2
+    },
     'STRING' : {
         'type': 'string',
         'value': 'a sufficiently long string'
