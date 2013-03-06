@@ -49,12 +49,24 @@ pvdb = {
         'value': ['A39CharacterLongStringWhichIsTheMaximum',
                   'another string',
                   '& 1 more']
+    },
+    'COUNTER' : {
+        'type': 'int',
+        'value': 0,
+        'scan': 1
     }
 }
 
 class testDriver(Driver):
     def __init__(self):
         super(testDriver, self).__init__()
+    def read(self, reason):
+        if reason is 'COUNTER':
+            value = self.getParam(reason) + 1
+            self.setParam(reason, value)
+        else:
+            value = self.getParam(reason)
+        return value
 
 server = SimpleServer()
 server.createPV(prefix, pvdb)
