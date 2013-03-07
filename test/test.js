@@ -33,7 +33,6 @@ describe('channel', function() {
         before(function(done) {
           pv.connect(function(_err) {
             err = _err;
-            //pv.monitor();
             done();
           });
         });
@@ -58,7 +57,7 @@ describe('channel', function() {
           assert.equal(pv.state(), codes.state.CS_CLOSED);
         });
         it('connected should be false', function() {
-          //assert.equal(pv.connected(), false);
+          assert.equal(pv.connected(), false);
         });
       });
     });
@@ -71,7 +70,7 @@ describe('channel', function() {
       describe('after connecting', function() {
         var err;
         before(function(done) {
-          pv.connect(function(_err) {
+          pv.connect({timeout: 250}, function(_err) {
             err = _err;
             done();
           });
@@ -223,6 +222,32 @@ describe('channel', function() {
                     'another string',
                     '& 1 more']);
           done();
+        });
+      });
+    });
+  });
+  describe('monitor:', function() {
+    describe('type string', function() {
+      var pv;
+      before(function(done) {
+        pv = new epics.Channel('NODE_EPICS_TEST:COUNTER');
+        pv.connect(function(err) {
+          pv.monitor();
+          done();
+        });
+      });
+      it('should observe three consecutive integers', function(done) {
+        var lastValue = null;
+        var count = 0;
+        pv.on('value', function(value) {
+          if(count > 0) {
+            assert.equal(value, lastValue + 1);
+          }
+          count += 1;
+          lastValue = value;
+          if (count === 3) {
+            done();
+          }
         });
       });
     });

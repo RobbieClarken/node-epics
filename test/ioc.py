@@ -53,7 +53,7 @@ pvdb = {
     'COUNTER' : {
         'type': 'int',
         'value': 0,
-        'scan': 1
+        'scan': 0.2
     }
 }
 
