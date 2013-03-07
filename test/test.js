@@ -1,4 +1,4 @@
-var epics = require('../main')
+var epics = require('../index')
   , assert = require('assert')
   , spawn = require('child_process').spawn
   , path = require('path')

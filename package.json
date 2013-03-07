@@ -2,13 +2,13 @@
   "author": "Robbie Clarken <robbie.clarken@gmail.com>",
   "name": "epics",
   "description": "EPICS Channel Access for node.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "https://github.com/RobbieClarken/node-epics",
   "repository": {
     "type": "git",
     "url": "git://github.com/RobbieClarken/node-epics.git"
   },
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha test/test.js"
   },
