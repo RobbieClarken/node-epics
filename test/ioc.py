@@ -53,7 +53,25 @@ pvdb = {
     'COUNTER' : {
         'type': 'int',
         'value': 0,
-        'scan': 0.2
+        'scan': 0.1
+    },
+    'PUT_INT' : {
+        'type': 'int',
+        'value': 23
+    },
+    'PUT_STRING' : {
+        'type': 'string',
+        'value': 'before'
+    },
+    'PUT_FLOAT_WAVEFORM' : {
+        'type': 'float',
+        'count': 3,
+        'value': [1.2, 5.6, 7.1]
+    },
+    'PUT_STRING_WAVEFORM' : {
+        'type': 'string',
+        'count': 5,
+        'value': ['You', 'got', 'a', 'fast', 'car']
     }
 }
 

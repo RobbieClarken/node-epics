@@ -252,4 +252,78 @@ describe('channel', function() {
       });
     });
   });
+  describe('put:', function() {
+    describe('type int', function() {
+      var pv;
+      before(function(done) {
+        pv = new epics.Channel('NODE_EPICS_TEST:PUT_INT');
+        pv.connect(function(err) {
+          done();
+        });
+      });
+      it('value should be 42 after putting value', function(done) {
+        pv.put(42, function(put_err) {
+          assert.equal(put_err, null);
+          pv.get(function(get_err, value) {
+            assert.equal(value, 42);
+            done();
+          });
+        });
+      });
+    });
+    describe('type string', function() {
+      var pv;
+      before(function(done) {
+        pv = new epics.Channel('NODE_EPICS_TEST:PUT_STRING');
+        pv.connect(function(err) {
+          done();
+        });
+      });
+      it('value should be "after" after putting value', function(done) {
+        pv.put('after', function(put_err) {
+          assert.equal(put_err, null);
+          pv.get(function(get_err, value) {
+            assert.equal(value, 'after');
+            done();
+          });
+        });
+      });
+    });
+    describe('type float waveform', function() {
+      var pv;
+      before(function(done) {
+        pv = new epics.Channel('NODE_EPICS_TEST:PUT_FLOAT_WAVEFORM');
+        pv.connect(function(err) {
+          done();
+        });
+      });
+      it('value should be [8.9, 11, 0.1] after putting value', function(done) {
+        pv.put([8.9, 11, 0.1], function(put_err) {
+          assert.equal(put_err, null);
+          pv.get(function(get_err, value) {
+            assert.deepEqual(value, [8.9, 11, 0.1]);
+            done();
+          });
+        });
+      });
+    });
+    describe('type string waveform', function() {
+      var pv;
+      before(function(done) {
+        pv = new epics.Channel('NODE_EPICS_TEST:PUT_STRING_WAVEFORM');
+        pv.connect(function(err) {
+          done();
+        });
+      });
+      it('value should be ["I","want","a","ticket","to","anywhere"] after putting value', function(done) {
+        pv.put(['I', 'wanna', 'ticket', 'to', 'anywhere'], function(put_err) {
+          assert.equal(put_err, null);
+          pv.get(function(get_err, value) {
+            assert.deepEqual(value, ['I', 'wanna', 'ticket', 'to', 'anywhere']);
+            done();
+          });
+        });
+      });
+    });
+  });
 });
