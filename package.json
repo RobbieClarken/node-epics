@@ -2,7 +2,7 @@
   "author": "Robbie Clarken <robbie.clarken@gmail.com>",
   "name": "epics",
   "description": "EPICS Channel Access for node.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/RobbieClarken/node-epics",
   "repository": {
     "type": "git",
@@ -13,16 +13,12 @@
     "test": "node_modules/mocha/bin/mocha -R spec"
   },
   "dependencies": {
-    "ffi": "*",
-    "ref": "*",
-    "ref-struct": "*",
-    "ref-array": "*"
+    "ffi": "^1.2.7",
+    "ref": "^0.3.2",
+    "ref-array": "^1.0.0",
+    "ref-struct": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
-  },
-  "optionalDependencies": {},
-  "engines": {
-    "node": "*"
+    "mocha": "^2.0.1"
   }
 }
