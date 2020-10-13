@@ -1,3 +1,8 @@
+# :warning: Warning: Unmaintained :warning:
+
+This project is no longer maintained and may not work with recent versions of nodejs or EPICS.
+Consider using https://github.com/onichandame/epics-ioc-connection instead.
+
 # Information
 
 EPICS Channel Access in node.js.
